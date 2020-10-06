@@ -8,8 +8,9 @@ import Logo from './Component/Logo/Logo'
 import Signin from './Component/SignIn/SiginIn'
 import Services from './Component/Services/Services'
 import AboutUs from './Component/AboutUs/AboutUs'
-
-
+import ExpenseSlip from './Component/LoadUser/ExpenseSlip/ExpenseSlip'
+import ReviewSlip from './Component/LoadUser/ReviewSlip/ReviewSlip'
+import Employee from './Component/LoadUser/Employee/Employee'
 class App extends Component
  {
   constructor(props) {
@@ -25,7 +26,8 @@ class App extends Component
         company:'',
         designation:'',
         contactNumber:'',
-        entry:new Date()
+        joined:new Date()
+
       }
     }
   }
@@ -39,10 +41,15 @@ class App extends Component
         company:data.company,
         designation:data.designation,
         contactNumber:data.contactNumber,
-        entry:data.entry
+        joined:data.joined
       }
     })
+
+    //console.log(`After Load User waiting to next function`);
   }
+
+
+
 
 onRouteChange=(route)=>{
   if(route=='signin'||route=='register')
@@ -56,48 +63,56 @@ onRouteChange=(route)=>{
   }
 
   this.setState({route:route});
-  console.log("set value " + this.state.route);
-  console.log("Given value   "+route);
+  console.log("Setting the new Route value " + this.state.route);
+  console.log("Given Route value " +route);
    
   }
   render(){
       return (
-    
-         <div className='App'>
-      {
+        
+        <div className='App'>          
+        {
         <div>
-        <Navigation onRouteChange={this.onRouteChange} />
+        <Navigation onRouteChange={this.onRouteChange}  />
         { 
-          this.state.route==='signin' ?
-          <Signin onRouteChange={this.onRouteChange}/>
-          :
-          <div>
-          {
-              this.state.route==='register'?
-              <Register onRouteChange={this.onRouteChange}/>
-              :
-              <div>  
+          this.state.route==='employee'?
+            <div>
+            <Employee onRouteChange={this.onRouteChange} />
+            </div>
+            :
+            
+            <div>
+              {
+              this.state.route==='signin' ?
+                <Signin onRouteChange={this.onRouteChange}/>
+                :
+                <div>
                 {
-                this.state.route==='services'?
-                <Services onRouteChange={this.onRouteChange}/>
-                :
-                this.state.route==='aboutus'?
-                <AboutUs onRouteChange={this.onRouteChange}/>
-                :
-                <div>                      
-                <Logo/>
-                <Home/>  
-                </div>
+                    this.state.route==='register'?
+                    <Register  loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+                    :
+                    <div>  
+                    {
+                      this.state.route==='services'?
+                      <Services onRouteChange={this.onRouteChange}/>
+                      :
+                      this.state.route==='aboutus'?
+                      <AboutUs onRouteChange={this.onRouteChange}/>
+                      :
+                      <div>                      
+                        <Logo/>
+                        <Home/>  
+                      </div>
+                    }              
+                    </div>
+                }
+                </div>   
               }
               </div>
-      }
-      
-        </div>   
-      }
-      </div>
-      
-    }
-      </div>
+        }
+        </div>       
+        }
+        </div>
 
         
    

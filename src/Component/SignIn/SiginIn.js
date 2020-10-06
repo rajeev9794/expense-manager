@@ -22,7 +22,8 @@ class Signin extends React.Component {
     onSubmitSignIn=()=>{
         console.log(this.state)
        // this.setState({route:})
-        /*fetch('http://localhost:3002/signin',{
+       
+       fetch('http://localhost:3003/signin',{
             method:'post',
             headers:{'Content-Type':'application/json'},
             body:JSON.stringify({
@@ -32,11 +33,16 @@ class Signin extends React.Component {
         }).then(Response=>Response.json())
           .then(data=>{
               if(data === 'success')
-              this.props.onRouteChange('home')
+              {
+                  alert(`Successfully signin`);
+                  //On signin Load User to add receipt
+                  //After submitting route to home
+                  this.props.onRouteChange('employee')
+              }
               else
               alert(`user doesn't exist`);
             })
-          */
+          
         
     }
     render(){
@@ -57,7 +63,7 @@ class Signin extends React.Component {
                             id="email-address"
                             />
                     </div>
-                    <div className="mv3">
+                    <div className="mt3">
                         <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
                         <input 
                             onChange={this.onPasswordChange}

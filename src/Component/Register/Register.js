@@ -10,7 +10,8 @@ class Register extends React.Component{
              password:'',
              companyName:'',
              designation:'',
-             contactNumber:''
+             contactNumber:'',
+             joined:''
         }
     }
     onChangeName=(event)=>{
@@ -30,30 +31,37 @@ class Register extends React.Component{
     }
     
     onRegister=()=>{
-        console.log('Changed state '+this.state.route);
-        /*
-        fetch('http://localhost:3002/register',{
+        //console.log('Changed state '+this.state.route);
+        //alert('I am inside onRegister');
+        fetch('http://localhost:3003/register',{
             method:'post',
             headers:{'Content-Type':'application/json'},
             body:JSON.stringify({
                 name:this.state.name,
                 email:this.state.email,
-                password:this.state.password
+                password:this.state.password,
+                companyName:this.state.companyName,
+                designation:this.state.designation,
+                contactNumber:this.state.contactNumber,
+                joined:new Date()           
             })
         }).then(Response=>Response.json())
           .then(user=>{
                 if(user)
                 {   
+                    //On successfully registering load user data 
                     this.props.loadUser(user);
-                    this.props.onRouteChange('home')
+                    if(user.designation=='employee')
+                    this.props.onRouteChange('employee');
+                    else
+                    this.props.onRouteChange('manager');
                 }
                 
             })
-            */
+            
     }
     
     render(){
-    const {onRouteChange}=this.props;
     return (
     
     <article className="br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-6 center">
@@ -129,6 +137,7 @@ class Register extends React.Component{
 
                <div className="">
                     <input
+
                                     onClick={this.onRegister}
                                     className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
                                     type="submit" 
