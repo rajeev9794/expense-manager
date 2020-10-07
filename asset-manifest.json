@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/expense-manager/static/css/main.2465e0ad.chunk.css",
-    "main.js": "/expense-manager/static/js/main.0cb6b4de.chunk.js",
-    "main.js.map": "/expense-manager/static/js/main.0cb6b4de.chunk.js.map",
+    "main.js": "/expense-manager/static/js/main.383dc6b3.chunk.js",
+    "main.js.map": "/expense-manager/static/js/main.383dc6b3.chunk.js.map",
     "runtime-main.js": "/expense-manager/static/js/runtime-main.f7c68bf5.js",
     "runtime-main.js.map": "/expense-manager/static/js/runtime-main.f7c68bf5.js.map",
     "static/css/2.3c03f26f.chunk.css": "/expense-manager/static/css/2.3c03f26f.chunk.css",
     "static/js/2.e947e367.chunk.js": "/expense-manager/static/js/2.e947e367.chunk.js",
     "static/js/2.e947e367.chunk.js.map": "/expense-manager/static/js/2.e947e367.chunk.js.map",
     "index.html": "/expense-manager/index.html",
-    "precache-manifest.285499c09e779c9ddca2e34c5946b8e9.js": "/expense-manager/precache-manifest.285499c09e779c9ddca2e34c5946b8e9.js",
+    "precache-manifest.6c87f2086407fca91ba969066bbbcf97.js": "/expense-manager/precache-manifest.6c87f2086407fca91ba969066bbbcf97.js",
     "service-worker.js": "/expense-manager/service-worker.js",
     "static/css/2.3c03f26f.chunk.css.map": "/expense-manager/static/css/2.3c03f26f.chunk.css.map",
     "static/css/main.2465e0ad.chunk.css.map": "/expense-manager/static/css/main.2465e0ad.chunk.css.map",
@@ -23,6 +23,6 @@
     "static/css/2.3c03f26f.chunk.css",
     "static/js/2.e947e367.chunk.js",
     "static/css/main.2465e0ad.chunk.css",
-    "static/js/main.0cb6b4de.chunk.js"
+    "static/js/main.383dc6b3.chunk.js"
   ]
 }
