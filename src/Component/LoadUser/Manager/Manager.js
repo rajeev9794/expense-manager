@@ -9,8 +9,8 @@ class Manager extends React.Component{
 
             return(
              <div>
-               <h1>User Reaching to the Manager page</h1> 
-               <p>LinkChange</p>
+               <h1>Welcome to the Automated Expense System </h1> 
+               <h1>Add Expense and Approve Expenses</h1>
             </div>
             );
         }

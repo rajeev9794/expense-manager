@@ -10,9 +10,8 @@ class Employee extends React.Component{
             return(
              <div>
                <p>Welcome to Automated Expense Management </p>
-               <h1>User Reaching to the Employee page</h1> 
+               <h1>Submit Your Expenses to Get Reimbursement</h1> 
 
-               <p>LinkChange</p>
             </div>
             );
         }
