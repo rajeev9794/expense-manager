@@ -31,8 +31,24 @@ class Register extends React.Component{
     }
     
     onRegister=()=>{
+        if(this.state.designation==='engineer')
+        this.props.onRouteChange('employee');
+        else
+        this.props.onRouteChange('manager');
+
+
+        /*
         //console.log('Changed state '+this.state.route);
         //alert('I am inside onRegister');
+        //this.props.loadUser();
+        this.props.onRouteChange('employee')
+        /*
+        console.log('Current state designation =' +this.state.designation);
+        if(this.state.designation==='employee')
+            this.props.onRouteChange('employee');
+        else
+            this.props.onRouteChange('manager');
+        /*
         fetch('http://localhost:3003/register',{
             method:'post',
             headers:{'Content-Type':'application/json'},
@@ -51,14 +67,14 @@ class Register extends React.Component{
                 {   
                     //On successfully registering load user data 
                     this.props.loadUser(user);
-                    if(user.designation=='employee')
+                    if(user.designation==='employee')
                     this.props.onRouteChange('employee');
                     else
                     this.props.onRouteChange('manager');
                 }
                 
             })
-            
+          */  
     }
     
     render(){

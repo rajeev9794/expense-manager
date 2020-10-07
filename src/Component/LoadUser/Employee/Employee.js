@@ -4,14 +4,15 @@ class Employee extends React.Component{
     
     render()  
     {
-    const {onRouteChange}=this.props;
-
+      
             
 
             return(
              <div>
+               <p>Welcome to Automated Expense Management </p>
                <h1>User Reaching to the Employee page</h1> 
-               <p onClick={()=>onRouteChange('')} >LinkChange</p>
+
+               <p>LinkChange</p>
             </div>
             );
         }

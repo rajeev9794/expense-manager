@@ -11,22 +11,24 @@ import AboutUs from './Component/AboutUs/AboutUs'
 import ExpenseSlip from './Component/LoadUser/ExpenseSlip/ExpenseSlip'
 import ReviewSlip from './Component/LoadUser/ReviewSlip/ReviewSlip'
 import Employee from './Component/LoadUser/Employee/Employee'
+import Manager from  './Component/LoadUser/Manager/Manager'
+import ApprovalSlip from './Component/LoadUser/ApprovalSlip/ApprovalSlip';
+
 class App extends Component
  {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
 
     this.state = {
       route:'home',
       isSignedIn:false,
       user:{
-        id:'',
         name:'',
         email:'',
         company:'',
         designation:'',
         contactNumber:'',
-        joined:new Date()
+        joined:''
 
       }
     }
@@ -35,7 +37,6 @@ class App extends Component
     //console.log(data.id);
     this.setState({
       user:{
-        id:data.id,
         name:data.name,
         email:data.email,
         company:data.company,
@@ -52,11 +53,12 @@ class App extends Component
 
 
 onRouteChange=(route)=>{
-  if(route=='signin'||route=='register')
+  
+  if(route==='signin'||route==='register' || route==='home')
   {
     this.setState({isSignedIn:false});
   }
-  else if(route=='home')
+  else if(route==='employee' || route==='manager')
   {
     this.setState({isSignedIn:true});
 
@@ -68,23 +70,26 @@ onRouteChange=(route)=>{
    
   }
   render(){
+      const {isSignedIn}=this.state;
       return (
         
         <div className='App'>          
         {
         <div>
-        <Navigation onRouteChange={this.onRouteChange}  />
+        <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} route={this.state.route} />
         { 
+
           this.state.route==='employee'?
             <div>
-            <Employee onRouteChange={this.onRouteChange} />
+            <Employee onRouteChange={this.onRouteChange} name={this.state.user.name}/>
             </div>
             :
-            
             <div>
               {
               this.state.route==='signin' ?
-                <Signin onRouteChange={this.onRouteChange}/>
+                 <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+                
+               // <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
                 :
                 <div>
                 {
@@ -99,6 +104,12 @@ onRouteChange=(route)=>{
                       this.state.route==='aboutus'?
                       <AboutUs onRouteChange={this.onRouteChange}/>
                       :
+                      this.state.route==='manager'?
+                      <Manager />:
+                      this.state.route==='expenseSlip'?
+                      <ExpenseSlip />:
+                      this.state.route==='approveSlip'?
+                      <ApprovalSlip/>:
                       <div>                      
                         <Logo/>
                         <Home/>  

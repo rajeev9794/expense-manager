@@ -5,48 +5,66 @@ class Signin extends React.Component {
         super(props)
     
         this.state = {
-             signInEmailChange:'',
-             signInPasswordChange:''
+             signInEmail:'',
+             signInPassword:'',
+             designation:''
         }
     }
     onEmailChange=(event)=>{
-        this.setState({signInEmailChange:event.target.value});
+        this.setState({signInEmail:event.target.value});
         //console.log(event.target.value);
 
     }
     onPasswordChange=(event)=>{
-        this.setState({signInPasswordChange:event.target.value});
+        this.setState({signInPassword:event.target.value});
         //console.log(event.target.value);
 
     }
-    onSubmitSignIn=()=>{
-        console.log(this.state)
-       // this.setState({route:})
-       
-       fetch('http://localhost:3003/signin',{
+    onDesignationChange=(event)=>{
+        this.setState({designation:event.target.value});
+        //console.log(event.target.value);
+
+    }
+    onSubmitSignIn= () => {
+        
+        if(this.state.designation==='engineer')
+        this.props.onRouteChange('employee');
+        else
+        this.props.onRouteChange('manager');
+    
+        /*
+      fetch('http://localhost:3003/signin',{
             method:'post',
             headers:{'Content-Type':'application/json'},
             body:JSON.stringify({
-                email:this.state.signInEmailChange,
-                password:this.state.signInPasswordChange
+                email:this.state.signInEmail,
+                password:this.state.signInPassword
             })
         }).then(Response=>Response.json())
           .then(data=>{
-              if(data === 'success')
+              alert("value retured=" + data);
+              if(data === 'employee')
               {
                   alert(`Successfully signin`);
                   //On signin Load User to add receipt
                   //After submitting route to home
-                  this.props.onRouteChange('employee')
+
+                  this.props.onRouteChange('employee');
+              }
+              else if(data === 'manager')
+              {
+                  this.props.onRouteChange('manager');
+
               }
               else
               alert(`user doesn't exist`);
             })
-          
+            .catch(console.log('error occurred'))
         
+            */
     }
     render(){
-        const {onRouteChange}=this.props;
+        const {onloadUser,onRouteChange}=this.props;
     return (
     
     <article className="br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-6 center">
@@ -73,11 +91,22 @@ class Signin extends React.Component {
                             id="password"
                             />
                         </div>
+                        <div className="mt3">
+                        <label className="db fw6 lh-copy f6" htmlFor="designation">Designation</label>
+                        <input 
+                            onChange={this.onDesignationChange}
+                            className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
+                            type="text" 
+                            name="designation" 
+                            id="designation"
+                            />
+                        </div>
                             <label className="pa0 ma0 lh-copy f6 pointer"><input type="checkbox"/> Remember me</label>
                         </fieldset>
                             <div className="">
                                 <input 
                                     onClick={this.onSubmitSignIn}
+
                                     className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
                                     type="submit"
                                      value="Sign in"
