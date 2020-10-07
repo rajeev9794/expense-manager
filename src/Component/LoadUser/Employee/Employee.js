@@ -9,7 +9,7 @@ class Employee extends React.Component{
 
             return(
              <div>
-               <p>Welcome to Automated Expense Management </p>
+               <h1>Welcome to Automated Expense Management </h1>
                <h1>Submit Your Expenses to Get Reimbursement</h1> 
 
             </div>

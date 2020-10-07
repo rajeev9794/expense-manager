@@ -3,7 +3,7 @@ import React from 'react'
 const Services=()=>{
     return(
             <div>
-                <p>Welcome to Automated payment services</p>
+                <h1>Welcome to Automated payment services</h1>
             </div>
     );
 }
